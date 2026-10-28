@@ -47,6 +47,27 @@ html, body { margin: 0; }
 body { background: var(--color-bg); color: var(--color-fg); font-size: 14px; }
 .rh-page { padding-block: clamp(1rem, 3vw, 2rem); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 </style>
+<style>
+button.rh-shot { display: block; width: 100%; padding: 0; margin: 0; font: inherit; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+button.rh-shot:hover { box-shadow: 0 8px 24px rgb(7 75 75 / .18); }
+@media (prefers-reduced-motion: no-preference) { button.rh-shot:hover { transform: translateY(-2px); } }
+button.rh-shot:focus-visible { outline: 3px solid var(--rh-accent); outline-offset: 2px; }
+.rh-play { position: absolute; inset: 0; margin: auto; width: 3.4rem; height: 3.4rem; border-radius: 50%; background: rgb(7 75 75 / .82); box-shadow: 0 4px 16px rgb(0 0 0 / .25); }
+.rh-play::after { content: ""; position: absolute; inset: 0; margin: auto; width: 0; height: 0; transform: translateX(3px); border-style: solid; border-width: .65rem 0 .65rem 1.05rem; border-color: transparent transparent transparent #FFFFFF; }
+button.rh-shot:hover .rh-play { background: #186C71; }
+.rh-lb { border: 0; padding: 0; background: var(--color-panel); color: var(--color-fg); border-radius: 16px; width: min(94vw, 1100px); max-height: 94vh; overflow: hidden; font-family: "RB", "IBM Plex Sans Arabic", Tahoma, sans-serif; }
+.rh-lb::backdrop { background: rgb(3 25 26 / .82); }
+.rh-lb-head { display: flex; align-items: center; gap: .75rem; padding: .7rem 1rem; border-bottom: 1px solid var(--color-border-line); }
+.rh-lb-cap { display: grid; gap: .1rem; flex: 1; min-width: 0; }
+.rh-lb-cap b { font-weight: 700; }
+.rh-lb-cap span { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.rh-lb-link { flex: none; font-size: var(--cds-font-size-caption); font-weight: 700; color: #FFFFFF; background: #186C71; padding: .45rem .8rem; border-radius: 999px; text-decoration: none; }
+.rh-lb-link:hover { background: #074B4B; }
+.rh-lb-close { flex: none; width: 2.2rem; height: 2.2rem; border-radius: 50%; border: 1px solid var(--color-border-line); background: transparent; color: var(--color-fg); font-size: 1rem; cursor: pointer; }
+.rh-lb-close:focus-visible, .rh-lb-link:focus-visible { outline: 3px solid #5FBA7E; outline-offset: 2px; }
+.rh-lb-media { display: grid; place-items: center; background: #031C1D; }
+.rh-lb-media img, .rh-lb-media video { display: block; max-width: 100%; max-height: calc(94vh - 4.5rem); width: auto; height: auto; }
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
 (function () {
@@ -214,21 +235,21 @@ body { background: var(--color-bg); color: var(--color-fg); font-size: 14px; }
     <h2>نماذج من الأعمال</h2>
     <p class="sub">مختارات من فيديوهات الشهر وتصاميمه وملفاته ومنصاته الرقمية. صور الفيديو لقطات من المقطع النهائي.</p>
     <div class="rh-gallery">
-      <figure class="rh-work wide"><div class="rh-shot w1" role="img" aria-label="لقطة من فيديو مكتب الدعوة بالسلي"><span class="tag">فيديو</span></div><figcaption><b>فيديو مكتب الدعوة بالسلي</b><span>مونتاج · مكتب الدعوة بالسلي</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s1" role="img" aria-label="نسخ شعار فريق الأشبال"></div><figcaption><b>هوية فريق الأشبال</b><span>هوية بصرية</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s8" role="img" aria-label="لقطة من موشن جرافيك آية رب اجعل هذا بلدا آمنا"><span class="tag">فيديو</span></div><figcaption><b>رب اجعل هذا بلدًا آمنًا</b><span>موشن جرافيك · أحدث نسخة</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s13" role="img" aria-label="تصميم رب اجعل هذا البلد آمنا مع العلم السعودي"></div><figcaption><b>ربِّ اجعل هذا البلد آمنًا</b><span>تصميم · الوطن</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s10" role="img" aria-label="لقطة من فيديو موجز غيث"><span class="tag">فيديو</span></div><figcaption><b>موجز غيث</b><span>موشن · مغامرات غيث</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s12" role="img" aria-label="لقطة من موشن جرافيك بدائل كلمة لا"><span class="tag">فيديو</span></div><figcaption><b>بدائل كلمة «لا»</b><span>موشن جرافيك · أحدث نسخة</span></figcaption></figure>
-      <figure class="rh-work wide"><div class="rh-shot w2" role="img" aria-label="غلاف الملف التعريفي للجمعية"></div><figcaption><b>الملف التعريفي للجمعية</b><span>ملف تعريفي · 1448هـ</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s9" role="img" aria-label="إنفوجرافيك سنن يوم الجمعة"></div><figcaption><b>سنن يوم الجمعة</b><span>إنفوجرافيك · الرياحين</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s11" role="img" aria-label="غلاف ملف شركاء الرياحين"></div><figcaption><b>ملف الشركات: شركاء الرياحين</b><span>دليل مزايا الشركاء</span></figcaption></figure>
-      <figure class="rh-work wide"><div class="rh-shot w3" role="img" aria-label="واجهة منظومة PMO"></div><figcaption><b>منظومة PMO للرياحين</b><span>نظام إدارة المشاريع والأداء</span></figcaption></figure>
-      <figure class="rh-work wide"><div class="rh-shot w4" role="img" aria-label="الصفحة الرئيسية لمنصة حجز المقرات"></div><figcaption><b>منصة حجز المقرات</b><span>تطبيق ويب · حجز القاعات</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s2" role="img" aria-label="إعلان برنامج قادر الرجولة لا تقاس بالعمر"></div><figcaption><b>الرجولة لا تُقاس بالعمر</b><span>إعلان · برنامج قادر</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s3" role="img" aria-label="إعلان برنامج ابدأ لماذا أبدأ بذاتي"></div><figcaption><b>لماذا أبدأ بذاتي؟</b><span>إعلان · برنامج ابدأ</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s4" role="img" aria-label="إعلان سفرة المجمعة"></div><figcaption><b>إعلان سفرة المجمعة</b><span>إعلان · فريق أثر</span></figcaption></figure>
-      <figure class="rh-work"><div class="rh-shot s6" role="img" aria-label="منشور ماذا يتعلم طفلك وهو يلعب"></div><figcaption><b>ماذا يتعلّم طفلك وهو يلعب؟</b><span>منشور · الرياحين</span></figcaption></figure>
+      <figure class="rh-work wide"><button type="button" class="rh-shot w1" data-kind="video" data-src="assets/dawah.mp4" data-poster="assets/w1-poster.jpg" aria-label="شغّل: لقطة من فيديو مكتب الدعوة بالسلي"><span class="tag">فيديو</span><span class="rh-play" aria-hidden="true"></span></button><figcaption><b>فيديو مكتب الدعوة بالسلي</b><span>مونتاج · مكتب الدعوة بالسلي</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s1" data-kind="image" data-src="assets/s1.jpg" aria-label="اعرض: نسخ شعار فريق الأشبال"></button><figcaption><b>هوية فريق الأشبال</b><span>هوية بصرية</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s8" data-kind="video" data-src="assets/makkah.mp4" data-poster="assets/s8-poster.jpg" aria-label="شغّل: لقطة من موشن جرافيك آية رب اجعل هذا بلدا آمنا"><span class="tag">فيديو</span><span class="rh-play" aria-hidden="true"></span></button><figcaption><b>رب اجعل هذا بلدًا آمنًا</b><span>موشن جرافيك · أحدث نسخة</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s13" data-kind="image" data-src="assets/s13.jpg" aria-label="اعرض: تصميم رب اجعل هذا البلد آمنا مع العلم السعودي"></button><figcaption><b>ربِّ اجعل هذا البلد آمنًا</b><span>تصميم · الوطن</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s10" data-kind="video" data-src="assets/ghaith.mp4" data-poster="assets/s10-poster.jpg" aria-label="شغّل: لقطة من فيديو موجز غيث"><span class="tag">فيديو</span><span class="rh-play" aria-hidden="true"></span></button><figcaption><b>موجز غيث</b><span>موشن · مغامرات غيث</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s12" data-kind="video" data-src="assets/la.mp4" data-poster="assets/s12-poster.jpg" aria-label="شغّل: لقطة من موشن جرافيك بدائل كلمة لا"><span class="tag">فيديو</span><span class="rh-play" aria-hidden="true"></span></button><figcaption><b>بدائل كلمة «لا»</b><span>موشن جرافيك · أحدث نسخة</span></figcaption></figure>
+      <figure class="rh-work wide"><button type="button" class="rh-shot w2" data-kind="image" data-src="assets/w2.jpg" data-link="assets/w2.pdf" data-link-label="افتح الملف التعريفي كاملًا (PDF)" aria-label="اعرض: غلاف الملف التعريفي للجمعية"></button><figcaption><b>الملف التعريفي للجمعية</b><span>ملف تعريفي · 1448هـ</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s9" data-kind="image" data-src="assets/s9.jpg" aria-label="اعرض: إنفوجرافيك سنن يوم الجمعة"></button><figcaption><b>سنن يوم الجمعة</b><span>إنفوجرافيك · الرياحين</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s11" data-kind="image" data-src="assets/s11.jpg" data-link="assets/s11.pdf" data-link-label="افتح ملف الشركات كاملًا (PDF)" aria-label="اعرض: غلاف ملف شركاء الرياحين"></button><figcaption><b>ملف الشركات: شركاء الرياحين</b><span>دليل مزايا الشركاء</span></figcaption></figure>
+      <figure class="rh-work wide"><button type="button" class="rh-shot w3" data-kind="image" data-src="assets/w3.jpg" aria-label="اعرض: واجهة منظومة PMO"></button><figcaption><b>منظومة PMO للرياحين</b><span>نظام إدارة المشاريع والأداء</span></figcaption></figure>
+      <figure class="rh-work wide"><button type="button" class="rh-shot w4" data-kind="image" data-src="assets/w4.jpg" data-link="https://halls-production-a5cc.up.railway.app" data-link-label="افتح منصة الحجز" aria-label="اعرض: الصفحة الرئيسية لمنصة حجز المقرات"></button><figcaption><b>منصة حجز المقرات</b><span>تطبيق ويب · حجز القاعات</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s2" data-kind="image" data-src="assets/s2.jpg" aria-label="اعرض: إعلان برنامج قادر الرجولة لا تقاس بالعمر"></button><figcaption><b>الرجولة لا تُقاس بالعمر</b><span>إعلان · برنامج قادر</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s3" data-kind="image" data-src="assets/s3.jpg" aria-label="اعرض: إعلان برنامج ابدأ لماذا أبدأ بذاتي"></button><figcaption><b>لماذا أبدأ بذاتي؟</b><span>إعلان · برنامج ابدأ</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s4" data-kind="image" data-src="assets/s4.jpg" aria-label="اعرض: إعلان سفرة المجمعة"></button><figcaption><b>إعلان سفرة المجمعة</b><span>إعلان · فريق أثر</span></figcaption></figure>
+      <figure class="rh-work"><button type="button" class="rh-shot s6" data-kind="image" data-src="assets/s6.jpg" aria-label="اعرض: منشور ماذا يتعلم طفلك وهو يلعب"></button><figcaption><b>ماذا يتعلّم طفلك وهو يلعب؟</b><span>منشور · الرياحين</span></figcaption></figure>
     </div>
   </article>
 
@@ -545,5 +566,44 @@ document.querySelectorAll('#rh-cat').forEach((s) => s.addEventListener('change',
 </script>
 
 </main>
+
+<dialog class="rh-lb" id="rh-lb" dir="rtl" aria-labelledby="rh-lb-title">
+  <div class="rh-lb-head">
+    <div class="rh-lb-cap"><b id="rh-lb-title"></b><span id="rh-lb-sub"></span></div>
+    <a id="rh-lb-link" class="rh-lb-link" target="_blank" rel="noopener" hidden></a>
+    <button type="button" class="rh-lb-close" id="rh-lb-close" aria-label="إغلاق">✕</button>
+  </div>
+  <div class="rh-lb-media" id="rh-lb-media"></div>
+</dialog>
+<script>
+(function () {
+  const lb = document.getElementById('rh-lb');
+  const media = document.getElementById('rh-lb-media');
+  const link = document.getElementById('rh-lb-link');
+  const open = (btn) => {
+    const fig = btn.closest('figure');
+    document.getElementById('rh-lb-title').textContent = fig.querySelector('figcaption b').textContent;
+    document.getElementById('rh-lb-sub').textContent = fig.querySelector('figcaption span').textContent;
+    let el;
+    if (btn.dataset.kind === 'video') {
+      el = document.createElement('video');
+      el.controls = true; el.playsInline = true; el.autoplay = true; el.preload = 'auto';
+      el.poster = btn.dataset.poster; el.src = btn.dataset.src;
+    } else {
+      el = document.createElement('img');
+      el.src = btn.dataset.src; el.alt = fig.querySelector('figcaption b').textContent;
+    }
+    media.replaceChildren(el);
+    link.hidden = !btn.dataset.link;
+    if (btn.dataset.link) { link.href = btn.dataset.link; link.textContent = btn.dataset.linkLabel; }
+    lb.showModal();
+  };
+  document.querySelectorAll('button.rh-shot').forEach((b) => b.addEventListener('click', () => open(b)));
+  document.getElementById('rh-lb-close').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+  lb.addEventListener('close', () => { if (lb.open) return; const v = media.querySelector('video'); if (v) v.pause(); media.replaceChildren(); });
+})();
+</script>
+
 </body>
 </html>
